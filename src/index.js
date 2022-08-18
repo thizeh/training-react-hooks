@@ -1,30 +1,20 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { FaStar } from "react-icons/fa";
 
-// const [first, second, third] = ["Alex", "Ali", "Anna"];
+const createArray = (length) => [...Array(length)];
 
-// console.log(first, second);
-// console.log(second);
-// console.log(third);
+function Star({ selected = false }) {
+  return <FaStar color={selected ? "red" : "grays"} />;
+}
 
-// <App name="Alex" />
-
-//Adicionando state ao app component
+function StarRating({ totalStars = 5 }) {
+  return createArray(totalStars).map((n, i) => <Star key={i} />);
+}
 
 function App() {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <div>
-      <input
-        type="checkbox"
-        value={checked}
-        onChange={() => setChecked((checked) => !checked)}
-      />
-      <p>{checked ? "checked" : "not checked"}</p>
-    </div>
-  );
+  return <StarRating totalStars={10} />;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
